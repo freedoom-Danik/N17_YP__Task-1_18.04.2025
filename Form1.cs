@@ -9,28 +9,20 @@ namespace task1
         private Point previousPoint = Point.Empty;
         private Bitmap bmp;
         private Pen blackPen = new Pen(Color.Black, 4);
-        private Graphics g;
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e) { }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dialog = new OpenFileDialog())
+            using (OpenFileDialog dialog = new OpenFileDialog { Filter = "Image files (*.BMP, *.JPG, *.PNG)|*.bmp;*.jpg;*.png" })
             {
-                dialog.Filter = "Image files (*.BMP, *.JPG, *.PNG)|*.bmp;*.jpg;*.png";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    Image image = Image.FromFile(dialog.FileName);
-                    pictureBox1.Size = new Size(image.Width, image.Height);
-
-                    bmp = new Bitmap(image);
-                    pictureBox1.Image = bmp;
-                    g = Graphics.FromImage(bmp);
+                    pictureBox1.Image = bmp = new Bitmap(dialog.FileName);
+                    pictureBox1.Size = bmp.Size;
                 }
             }
         }
@@ -39,9 +31,12 @@ namespace task1
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left && bmp != null)
             {
-                g.DrawLine(blackPen, previousPoint, e.Location);
+                using (Graphics g = Graphics.FromImage(bmp))
+                {
+                    g.DrawLine(blackPen, previousPoint, e.Location);
+                }
                 previousPoint = e.Location;
                 pictureBox1.Invalidate();
             }
@@ -49,12 +44,9 @@ namespace task1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog saveDialog = new SaveFileDialog())
+            using (SaveFileDialog saveDialog = new SaveFileDialog { Filter = "Bitmap File(*.bmp)|*.bmp|JPEG File(*.jpg)|*.jpg|PNG File(*.png)|*.png" })
             {
-                saveDialog.Title = "Сохранить картинку как ...";
-                saveDialog.Filter = "Bitmap File(*.bmp)|*.bmp|JPEG File(*.jpg)|*.jpg|PNG File(*.png)|*.png";
-
-                if (saveDialog.ShowDialog() == DialogResult.OK)
+                if (saveDialog.ShowDialog() == DialogResult.OK && bmp != null)
                 {
                     string extension = System.IO.Path.GetExtension(saveDialog.FileName).ToLower();
                     switch (extension)
@@ -72,14 +64,12 @@ namespace task1
             if (bmp != null)
             {
                 for (int x = 0; x < bmp.Width; x++)
-                {
                     for (int y = 0; y < bmp.Height; y++)
                     {
                         Color pixel = bmp.GetPixel(x, y);
-                        int gray = (pixel.R + pixel.G + pixel.B) / 3;
+                        int gray = (int)(pixel.R * 0.3 + pixel.G * 0.59 + pixel.B * 0.11);
                         bmp.SetPixel(x, y, Color.FromArgb(255, gray, gray, gray));
                     }
-                }
                 pictureBox1.Invalidate();
             }
         }
