@@ -2,85 +2,84 @@
 {
     partial class Form1
     {
-        private System.ComponentModel.IContainer components = null;
+        private System.ComponentModel.IContainer c = null;
 
-        protected override void Dispose(bool disposing)
+        protected override void Dispose(bool d)
         {
-            if (disposing && (components != null))
+            if (d && (c != null))
             {
-                components.Dispose();
+                c.Dispose();
             }
-            base.Dispose(disposing);
+            base.Dispose(d);
         }
 
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pB = new System.Windows.Forms.PictureBox();
+            this.b1 = new System.Windows.Forms.Button();
+            this.b2 = new System.Windows.Forms.Button();
+            this.b3 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pB)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pB
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(776, 426);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            this.pB.Location = new System.Drawing.Point(12, 12);
+            this.pB.Name = "pB";
+            this.pB.Size = new System.Drawing.Size(776, 426);
+            this.pB.TabIndex = 0;
+            this.pB.TabStop = false;
+            this.pB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pB_MD);
+            this.pB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pB_MM);
             // 
-            // button1
+            // b1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 444);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Открыть";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.b1.Location = new System.Drawing.Point(12, 444);
+            this.b1.Name = "b1";
+            this.b1.Size = new System.Drawing.Size(75, 23);
+            this.b1.TabIndex = 1;
+            this.b1.Text = "Открыть";
+            this.b1.UseVisualStyleBackColor = true;
+            this.b1.Click += new System.EventHandler(this.b1_C);
             // 
-            // button2
+            // b2
             // 
-            this.button2.Location = new System.Drawing.Point(93, 444);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Сохранить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.b2.Location = new System.Drawing.Point(93, 444);
+            this.b2.Name = "b2";
+            this.b2.Size = new System.Drawing.Size(75, 23);
+            this.b2.TabIndex = 2;
+            this.b2.Text = "Сохранить";
+            this.b2.UseVisualStyleBackColor = true;
+            this.b2.Click += new System.EventHandler(this.b2_C);
             // 
-            // button3
+            // b3
             // 
-            this.button3.Location = new System.Drawing.Point(174, 444);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Градации серого";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.b3.Location = new System.Drawing.Point(174, 444);
+            this.b3.Name = "b3";
+            this.b3.Size = new System.Drawing.Size(120, 23);
+            this.b3.TabIndex = 3;
+            this.b3.Text = "Градации серого";
+            this.b3.UseVisualStyleBackColor = true;
+            this.b3.Click += new System.EventHandler(this.b3_C);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 480);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.b3);
+            this.Controls.Add(this.b2);
+            this.Controls.Add(this.b1);
+            this.Controls.Add(this.pB);
             this.Name = "Form1";
             this.Text = "Простой графический редактор";
-            //this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pB)).EndInit();
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.PictureBox pB;
+        private System.Windows.Forms.Button b1;
+        private System.Windows.Forms.Button b2;
+        private System.Windows.Forms.Button b3;
     }
 }
